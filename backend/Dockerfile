@@ -15,11 +15,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker layer caching
-COPY backend/requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip && pip install -r /app/requirements.txt
 
 # Copy the backend source
-COPY backend/ /app/backend/
+COPY . /app/backend/
 
 EXPOSE 8000
 
